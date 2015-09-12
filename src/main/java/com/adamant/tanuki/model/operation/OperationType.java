@@ -1,7 +1,10 @@
 package com.adamant.tanuki.model.operation;
 
+import jersey.repackaged.com.google.common.base.Predicate;
+import jersey.repackaged.com.google.common.collect.Collections2;
+import jersey.repackaged.com.google.common.collect.Iterables;
+
 import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * Created by igor on 06.09.2015.
@@ -28,7 +31,12 @@ public enum OperationType {
         return operation;
     }
 
-    public static Optional<OperationType> getBySign(String sign) {
-        return Arrays.asList(OperationType.values()).stream().filter(o -> o.getSign().equals(sign)).findFirst();
+    public static OperationType getBySign(final String sign) {
+        return Iterables.getOnlyElement(Collections2.filter(Arrays.asList(OperationType.values()), new Predicate<OperationType>() {
+            @Override
+            public boolean apply(OperationType input) {
+                return input.getSign().equals(sign);
+            }
+        }));
     }
 }

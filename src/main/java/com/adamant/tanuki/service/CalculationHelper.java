@@ -1,7 +1,5 @@
 package com.adamant.tanuki.service;
 
-import com.adamant.tanuki.model.operation.OperationType;
-
 import static com.adamant.tanuki.model.operation.OperationType.getBySign;
 
 /**
@@ -9,7 +7,7 @@ import static com.adamant.tanuki.model.operation.OperationType.getBySign;
  */
 public class CalculationHelper {
     public static double applyOperation(long first, long second, String operation) {
-        return getBySign(operation).get().getOperation().apply(first, second);
+        return getBySign(operation).getOperation().apply(first, second);
     }
 
 }
