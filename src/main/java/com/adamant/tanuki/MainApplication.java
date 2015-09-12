@@ -19,7 +19,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 /**
  * Created by igor on 03.09.2015.
  */
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = {
+        org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class})
 @Configuration
 @ComponentScan(basePackages = {"com.adamant.tanuki.controller", "com.adamant.tanuki.service"})
 @EnableJpaRepositories(basePackages = "com.adamant.tanuki.db")
